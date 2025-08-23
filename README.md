@@ -1,81 +1,83 @@
-# 🐍 Django CRUD API
+# Django CRUD API
 
-Minimalistyczny projekt backendowy oparty na Django, Django REST Framework oraz PostgreSQL. Gotowy do uruchomienia w kontenerze Docker – zawiera testy jednostkowe oraz REST API do zarządzania zadaniami (Tasks).
+Prosty projekt REST API oparty na Django, implementujący operacje Create, Read, Update i Delete (CRUD) do zarządzania elementami.
 
-## 📦 Technologie
+## 🚀 Funkcjonalności
 
-- Python 3.11  
-- Django 4.2  
-- Django REST Framework  
-- PostgreSQL  
-- Docker + docker-compose  
-- pytest (testy jednostkowe)
+* Autoryzacja użytkowników z wykorzystaniem JWT.
+* Operacje CRUD dla zarządzania elementami.
+* Testy automatyczne przy użyciu `pytest` i `pytest-django`.
+* Baza danych SQLite do developmentu i testów.
 
----
+## 🛠️ Technologie
 
-## 🚀 Uruchomienie projektu
+* Django 5.2.5
+* Django REST Framework
+* SQLite
+* pytest
+* pytest-django
 
-### 1. Klonowanie repozytorium
+## 📦 Instalacja
+
+1. Sklonuj repozytorium:
 
 ```bash
 git clone https://github.com/ciborowskigrzegorz-bit/django-crud-api.git
-cd django-crud-api/backend
+cd django-crud-api
 ```
 
-### 2. Uruchomienie przez Docker
+2. Utwórz i aktywuj wirtualne środowisko:
 
 ```bash
-docker-compose up --build
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
 
-Aplikacja powinna działać pod adresem:
-
-```
-http://localhost:8000/api/tasks/
-```
-
----
-
-## 📚 Endpointy API
-
-| Metoda | Endpoint           | Opis                        |
-|--------|--------------------|-----------------------------|
-| GET    | `/api/tasks/`      | Lista wszystkich zadań     |
-| POST   | `/api/tasks/`      | Dodanie nowego zadania     |
-| GET    | `/api/tasks/{id}/` | Pobranie konkretnego zadania |
-| PUT    | `/api/tasks/{id}/` | Aktualizacja zadania       |
-| DELETE | `/api/tasks/{id}/` | Usunięcie zadania          |
-
----
-
-## ✅ Testowanie
-
-Aby uruchomić testy jednostkowe:
+3. Zainstaluj zależności:
 
 ```bash
-docker-compose run web python manage.py test
+pip install -r requirements.txt
 ```
 
----
+4. Wykonaj migracje:
 
-## 📁 Struktura projektu
-
-```
-backend/
-├── manage.py
-├── core/          ← Ustawienia projektu Django
-├── tasks/         ← Aplikacja z CRUD
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── urls.py
-│   └── tests.py
-├── requirements.txt
-├── Dockerfile
-└── docker-compose.yml
+```bash
+python manage.py migrate
 ```
 
----
+5. Utwórz superużytkownika:
+
+```bash
+python manage.py createsuperuser
+```
+
+6. Uruchom serwer deweloperski:
+
+```bash
+python manage.py runserver
+```
+
+API będzie dostępne pod adresem `http://127.0.0.1:8000/`.
+
+## 🧪 Uruchamianie testów
+
+Aby uruchomić testy automatyczne:
+
+```bash
+pytest
+```
+
+Testy znajdują się w katalogu `api/tests/`.
+
+## 📄 Endpointy API
+
+* `POST /api/items/` – utwórz nowy element.
+* `GET /api/items/` – pobierz listę elementów.
+* `GET /api/items/{id}/` – pobierz element po ID.
+* `PUT /api/items/{id}/` – zaktualizuj element po ID.
+* `DELETE /api/items/{id}/` – usuń element po ID.
+
+Wszystkie endpointy wymagają autoryzacji.
 
 ## ✍️ Autor
 
