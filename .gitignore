@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -48,3 +49,23 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 .pyre/
+=======
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+env/
+*.sqlite3
+
+# Django
+*.log
+*.pot
+*.pyc
+*.mo
+db.sqlite3
+media/
+staticfiles/
+*.DS_Store
+>>>>>>> 1a6ce16 (Initial commit - Django CRUD API)
